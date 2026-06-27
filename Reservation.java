@@ -1,4 +1,6 @@
 //Le developpeur 2
+import java.util.ArrayList;
+import java.util.List;
 public class Reservation {
 
     private int id;
@@ -29,6 +31,22 @@ public class Reservation {
     public String getTemps_reservation() { 
         return temps_reservation; 
         }
+
+     private static ArrayList<Reservation> listeReservations = new ArrayList();
+    // Ajout d'une reservation 
+    public void reserver(Reservation r){
+        listeReservations.add(r);
+        System.out.println("votre reservation a été ajouter");
+    }
+    // Ajout de l'annulation d'une reservation
+    public void annuler(int id){
+        for(int i = 0; i<listeReservations.size(); i++){
+            if(listeReservations.get(i).getId() == id){
+                listeReservations.remove(i);
+            } 
+        }
+       
+    }
 
     @Override
     public String toString() {
