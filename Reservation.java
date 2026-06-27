@@ -47,6 +47,16 @@ public class Reservation {
         }
        
     }
+    //affichage des temps de reservation par salle 
+    public void temps_reservation(String salle){
+        for(int i = 0; i<listeReservations.size(); i++){
+            Reservation r =listeReservations.get(i);
+             if(r.getSalle().equals(salle)){
+                system.out.println("les temps de reservations sont : " + r);
+             }
+        }
+        
+    }
 
     @Override
     public String toString() {
