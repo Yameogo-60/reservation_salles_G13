@@ -1,8 +1,6 @@
-//Le developpeur 2
 import java.util.ArrayList;
 import java.util.List;
 public class Reservation {
-
     private int id;
     private String salle;
     private String etudiant;
