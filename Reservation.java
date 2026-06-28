@@ -65,11 +65,3 @@ public class Reservation {
                , temps_reservation='" + temps_reservation + "'}";
     }
 }
-public static void
-AfficherDetails(){
-    System.out.println("ID : " + id);
-    System.out.println("Salle : " + salle);
-    System.out.println(" Etudiant " + etudiant);
-    System.out.println("Temps : " + temps_reservation);
-
-}
