@@ -2,17 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestionnaireReservation {
-     //Le squelette de base que l'equipe va faire evoluer
+   //Le code d'erreur
      private List<Resarvation> reservations = new ArrayList<>();
      public boolean estDisponible(Salle salle, String creneau) {
-      for (Resarvation r : reservations) {
+      for (Reservation r : reservations) {
          if (r.getSalle().getNom().equals(salle.getNom())&& r.getCreneau().equals(creneau)) {
-            return false;
+            return true;
          }
       }
-      return true;
+      return false;
      }
-     
+
      public static void main(string[] args){
         System.out.println();
      }
