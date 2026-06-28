@@ -14,21 +14,45 @@ public class GestionnaireReservation {
         return true;
     }
 
-    public boolean existeSalle(String nom) {
+    public boolean existeSalle(String nomS) {
         for (int i = 0; i < salles.size(); i++) {
-            Salle s = salles.get(i);
-            if (s.getNom().equalsIgnoreCase(nom)) {
-                return true;
-            }
+            if (salles.get(i).getNom().equalsIgnoreCase(nomS)) return true;
         }
         return false;
     }
 
     public int nombreTotalReservations() {
-        return this.reservations.size();
+        return reservations.size();
+    }
+
+    public void ajouterSalle(Salle s) {
+        salles.add(s);
+        System.out.println("salle ajoutee");
+    }
+
+    public void afficherToutesLesReservations() {
+        System.out.println("Liste des reservations :");
+        if (reservations.size() == 0) {
+            System.out.println("Rien pour l'instant");
+        } else {
+            for (Reservation r : reservations) {
+                System.out.println(r.getSalle().getNom() + " - " + r.getCreneau());
+            }
+        }
+    }
+
+    public List<Reservation> obtenirReservationsParSalle(String nom) {
+        List<Reservation> liste = new ArrayList<>();
+        for (int i = 0; i < reservations.size(); i++) {
+            Reservation r = reservations.get(i);
+            if (r.getSalle().getNom().equalsIgnoreCase(nom)) {
+                liste.add(r);
+            }
+        }
+        return liste;
     }
 
     public static void main(String[] args) {
-        System.out.println("Outils initialises.");
+        System.out.println("ok");
     }
 }
