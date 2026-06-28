@@ -8,7 +8,7 @@ public class GestionnaireReservation {
     public boolean estDisponible(Salle salle, String creneau) {
         for (Reservation r : reservations) {
             // Modifié pour correspondre au String de Reservation.java
-            if (r.getSalle().equals(salle.getNom()) && r.getTemps_reservation().equals(creneau)) {
+          if (r.getSalle().equals(salle) && r.getTemps_reservation().equals(creneau)) {
                 return false;
             }
         }
