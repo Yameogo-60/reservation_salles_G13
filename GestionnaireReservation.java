@@ -7,7 +7,7 @@ public class GestionnaireReservation {
 
     public boolean estDisponible(Salle salle, String creneau) {
         for (Reservation r : reservations) {
-            if (r.getSalle().getNom().equals(salle.getNom()) && r.getCreneau().equals(creneau)) {
+            if (r.getSalle().getNom().equals(salle.getNom()) && r.getTemps_reservation().equals(creneau)) {
                 return false;
             }
         }
@@ -36,7 +36,7 @@ public class GestionnaireReservation {
             System.out.println("Rien pour l'instant");
         } else {
             for (Reservation r : reservations) {
-                System.out.println(r.getSalle().getNom() + " - " + r.getCreneau());
+                System.out.println(r.getSalle().getNom() + " - " + r.getTemps_reservation());
             }
         }
     }
