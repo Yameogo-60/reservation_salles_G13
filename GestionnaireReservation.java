@@ -5,7 +5,7 @@ public class GestionnaireReservation {
    //Le code d'erreur
      private List<Resarvation> reservations = new ArrayList<>();
      public boolean estDisponible(Salle salle, String creneau) {
-      for (Resarvation r : reservations) {
+      for (Reservation r : reservations) {
          if (r.getSalle().getNom().equals(salle.getNom())&& r.getCreneau().equals(creneau)) {
             return true;
          }
