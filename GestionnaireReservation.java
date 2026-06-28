@@ -6,18 +6,35 @@ public class GestionnaireReservation {
     private List<Salle> salles = new ArrayList<>();
 
     public boolean estDisponible(Salle salle, String creneau) {
-        for (Reservation r : reservations) {
-            // Modifié pour correspondre au String de Reservation.java
-          if (r.getSalle().equals(salle) && r.getTemps_reservation().equals(creneau)) {
-                return false;
+        for (int i = 0; i < reservations.size(); i++) {
+            Reservation r = reservations.get(i);
+            // Validation avec getSalle() qui renvoie un String
+            if (r.getSalle().equalsIgnoreCase(salle.getNom()) && r.getTemps_reservation().equals(creneau)) {
+                return false; 
             }
         }
-        return true;
+        return true; 
+    }
+
+    public boolean ajouterReservation(Reservation r) {
+        // Creation d'une instance de Salle pour la verification de disponibilite
+        Salle s = new Salle(0, r.getSalle());
+        
+        if (estDisponible(s, r.getTemps_reservation())) {
+            reservations.add(r);
+            System.out.println("Reservation ajoutee avec succes");
+            return true;
+        } else {
+            System.out.println("Erreur : La salle est deja prise");
+            return false;
+        }
     }
 
     public boolean existeSalle(String nomS) {
         for (int i = 0; i < salles.size(); i++) {
-            if (salles.get(i).getNom().equalsIgnoreCase(nomS)) return true;
+            if (salles.get(i).getNom().equalsIgnoreCase(nomS)) {
+                return true;
+            }
         }
         return false;
     }
@@ -36,7 +53,8 @@ public class GestionnaireReservation {
         if (reservations.size() == 0) {
             System.out.println("Rien pour l'instant");
         } else {
-            for (Reservation r : reservations) {
+            for (int i = 0; i < reservations.size(); i++) {
+                Reservation r = reservations.get(i);
                 System.out.println(r.getSalle() + " - " + r.getTemps_reservation());
             }
         }
@@ -53,39 +71,24 @@ public class GestionnaireReservation {
         return liste;
     }
 
+    // Main de test classique et lineaire
     public static void main(String[] args) {
-        System.out.println("ok");
-    }
-   //Le code d'erreur
-     private List<Resarvation> reservations = new ArrayList<>();
-     public boolean estDisponible(Salle salle, String creneau) {
-      for (Reservation r : reservations) {
-         if (r.getSalle().getNom().equals(salle.getNom())&& r.getCreneau().equals(creneau)) {
-            return true;
-         }
-      }
-      return false;
-     }
+        GestionnaireReservation g = new GestionnaireReservation();
 
-     public static void main(string[] args){
-        System.out.println();
-     }
-}
-public static void
-testSallelibre() {
-   Salle salle = new Salle("Salle Test");
-   GestionnaireReservation g = new GestionnaireReservation();
-   if (g.estDisponible(salle"8H-10H")){
-      System.out.println("Test ok : salle libre");
-   } else {
-System.out.println("Test Echec");
-   }
-}
-public static void
-testDoubleReservation(){
-   Salle salle = new salle("salle test");
-   GestionnaireReservation g = new GestionnaireReservation();
-   g.reserver("Ali", salle, "8H-10H");
-   g.reservation("Paul", salle, "8H-10H");
-   system.out.println("Test double reservation excecuter");
+        Salle salleTest = new Salle(1, "Salle Informatique");
+        g.ajouterSalle(salleTest);
+
+        // Correspondance parfaite avec le constructeur (int, String, String, String)
+        Reservation r1 = new Reservation(1, "Ali", "Salle Informatique", "8H-10H");
+        Reservation r2 = new Reservation(2, "Paul", "Salle Informatique", "8H-10H");
+
+        System.out.println("--- Test 1 : Premiere reservation ---");
+        g.ajouterReservation(r1);
+
+        System.out.println("--- Test 2 : Tentative de doublon ---");
+        g.ajouterReservation(r2);
+        
+        System.out.println("--- Test 3 : Affichage ---");
+        g.afficherToutesLesReservations();
+    }
 }
