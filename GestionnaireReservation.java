@@ -7,7 +7,8 @@ public class GestionnaireReservation {
 
     public boolean estDisponible(Salle salle, String creneau) {
         for (Reservation r : reservations) {
-            if (r.getSalle().getNom().equals(salle.getNom()) && r.getTemps_reservation().equals(creneau)) {
+            // Modifié pour correspondre au String de Reservation.java
+            if (r.getSalle().equals(salle.getNom()) && r.getTemps_reservation().equals(creneau)) {
                 return false;
             }
         }
@@ -36,7 +37,7 @@ public class GestionnaireReservation {
             System.out.println("Rien pour l'instant");
         } else {
             for (Reservation r : reservations) {
-                System.out.println(r.getSalle().getNom() + " - " + r.getTemps_reservation());
+                System.out.println(r.getSalle() + " - " + r.getTemps_reservation());
             }
         }
     }
@@ -45,7 +46,7 @@ public class GestionnaireReservation {
         List<Reservation> liste = new ArrayList<>();
         for (int i = 0; i < reservations.size(); i++) {
             Reservation r = reservations.get(i);
-            if (r.getSalle().getNom().equalsIgnoreCase(nom)) {
+            if (r.getSalle().equalsIgnoreCase(nom)) {
                 liste.add(r);
             }
         }
