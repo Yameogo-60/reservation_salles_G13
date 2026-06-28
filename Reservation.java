@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 public class Reservation {
     private int id;
     private String salle;
@@ -30,7 +29,7 @@ public class Reservation {
         return temps_reservation; 
         }
 
-     private static ArrayList<Reservation> listeReservations = new ArrayList();
+     private static ArrayList<Reservation> listeReservations = new ArrayList<Reservation>();
     // Ajout d'une reservation 
     public void reserver(Reservation r){
         listeReservations.add(r);
@@ -50,7 +49,7 @@ public class Reservation {
         for(int i = 0; i<listeReservations.size(); i++){
             Reservation r =listeReservations.get(i);
              if(r.getSalle().equals(salle)){
-                system.out.println("les temps de reservations sont : " + r);
+                System.out.println("les temps de reservations sont : " + r);
              }
         }
         
@@ -59,10 +58,11 @@ public class Reservation {
     @Override
     public String toString() {
         return "Reservation{" +
-               "id=" + id + "
-               , etudiant='" + etudiant + "'
-               , salle='" + salle + "' 
-               , temps_reservation='" + temps_reservation + "'}";
+                "id=" + id +
+                ", etudiant='" + etudiant + '\'' +
+                ", salle='" + salle + '\'' +
+                ", temps_reservation='" + temps_reservation + '\'' +
+                '}';
     }
 }
 public static void
