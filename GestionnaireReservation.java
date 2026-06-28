@@ -17,3 +17,13 @@ public class GestionnaireReservation {
         System.out.println();
      }
 }
+public static void
+testSallelibre() {
+   Salle salle = new Salle("Salle Test");
+   GestionnaireReservation g = new GestionnaireReservation();
+   if (g.estDisponible(salle"8H-10H")){
+      System.out.println("Test ok : salle libre");
+   } else {
+System.out.println("Test Echec");
+   }
+}
